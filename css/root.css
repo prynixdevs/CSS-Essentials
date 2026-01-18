@@ -8,6 +8,16 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--primary);
+  color: white;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -39,6 +49,19 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+a:visited {
+  color: var(--primary);
 }
 
 .container {
