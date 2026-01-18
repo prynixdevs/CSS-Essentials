@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout Methods - CSS Essentials</title>
+    <link rel="icon" href="../favicon.png" />
+    <link rel="shortcut icon" href="../favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/page.css" />
+    <style>
+      /* Layout Methods Page Specific Styles */
+      .lm-page .demo-visual {
+        width: 100%;
+      }
+
+      /* Flexbox Demo */
+      .flex-demo {
+        display: flex;
+        gap: 18px;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .flex-item {
+        background: var(--primary);
+        color: white;
+        padding: 1rem 1.5rem;
+        margin: 6px 0;
+        border-radius: 8px;
+        font-weight: 700;
+        transition:
+          transform 0.2s,
+          background 0.2s;
+        font-family: "Space Grotesk", "Montserrat", sans-serif;
+      }
+
+      .flex-item:hover {
+        background: var(--primary-dark);
+      }
+
+      /* Grid Demo */
+      .grid-demo {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 70px);
+        gap: 18px;
+        width: 100%;
+      }
+
+      .grid-item {
+        background: var(--accent-2);
+        color: white;
+        border-radius: 8px;
+        margin: 6px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        transition: transform 0.2s;
+        font-family: "Space Grotesk", "Montserrat", sans-serif;
+      }
+
+      .grid-item:hover {
+        /* No size change on hover */
+      }
+
+      .grid-item.span-2 {
+        grid-column: span 2;
+      }
+
+      /* Float Demo */
+      .float-demo {
+        overflow: hidden;
+        width: 100%;
+        text-align: left;
+      }
+
+      .float-left {
+        float: left;
+        width: 80px;
+        height: 80px;
+        background: var(--primary);
+        color: white;
+        border-radius: 8px;
+        margin-right: 15px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-family: "Space Grotesk", "Montserrat", sans-serif;
+      }
+
+      .float-text {
+        color: var(--text-light);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      /* Coming Soon Badge */
+      .coming-soon-badge {
+        display: inline-block;
+        background: var(--accent);
+        color: var(--dark);
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-left: 0.75rem;
+        vertical-align: middle;
+        font-family: "Space Grotesk", "Montserrat", sans-serif;
+      }
+
+      /* Warning/Tip Boxes */
+      .tip-box {
+        background: var(--bg-alt);
+        border-left: 4px solid var(--accent-2);
+        padding: 1rem 1.25rem;
+        border-radius: 0 8px 8px 0;
+        margin-top: 1.5rem;
+      }
+
+      .tip-box strong {
+        color: var(--primary);
+      }
+
+      .warning-box {
+        background: #fff5f5;
+        border-left: 4px solid #e74c3c;
+        padding: 1rem 1.25rem;
+        border-radius: 0 8px 8px 0;
+        margin-top: 1.5rem;
+      }
+
+      .warning-box strong {
+        color: #c0392b;
+      }
+
+      /* Use Cases Grid */
+      .use-cases-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 32px;
+      }
+
+      .use-case-card {
+        background: var(--bg-alt);
+        border-radius: 8px;
+        padding: 1.25rem;
+        border-left: 4px solid var(--primary);
+      }
+
+      .use-case-card.flex-card {
+        border-left-color: var(--primary);
+      }
+
+      .use-case-card.grid-card {
+        border-left-color: var(--accent-2);
+      }
+
+      .use-case-card.float-card {
+        border-left-color: var(--primary-dark);
+      }
+
+      .use-case-card h4 {
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        color: var(--text);
+        font-family: "Space Grotesk", "Montserrat", sans-serif;
+      }
+
+      .use-case-card ul {
+        color: var(--text-light);
+        padding-left: 1.25rem;
+        font-size: 0.9rem;
+      }
+
+      .use-case-card li {
+        margin: 0.4rem 0;
+      }
+
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 32px 0 40px 0;
+      }
+
+      @media (max-width: 600px) {
+        .grid-demo {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body class="lm-page">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="../" class="nav-logo">
+            <img src="../prynix.png" alt="Prynix Logo" class="logo-img" />
+            <span class="logo-title">CSS Essentials</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <svg
+              class="nav-toggle-icon"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
+          <div class="nav-links" id="nav-links">
+            <a href="../#about">About</a>
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-dropdown-toggle"
+                aria-expanded="false"
+                aria-controls="nav-dropdown-menu"
+              >
+                Workshop Topics <span class="nav-dropdown-caret">▾</span>
+              </button>
+              <div class="nav-dropdown-menu" id="nav-dropdown-menu">
+                <a href="../#topics">All Topics</a>
+                <a href="../pseudo-selectors/">Pseudo-Class Selectors</a>
+                <a href="../layout-methods/">Layout Methods</a>
+                <a href="#" class="disabled-link">Flexbox Mastery</a>
+                <a href="#" class="disabled-link">CSS Grid Layouts</a>
+                <a href="#" class="disabled-link">Animations & Transitions</a>
+                <a href="#" class="disabled-link">CSS Variables</a>
+                <a href="#" class="disabled-link">Advanced Selectors</a>
+              </div>
+            </div>
+            <a
+              href="https://github.com/prynixdevs/CSS-Essentials"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-cta"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container">
+        <a href="../" class="back-link">← Back to Home</a>
+        <h1>Layout Methods</h1>
+        <p>Understanding Flexbox, Grid & Float - when to use what.</p>
+      </div>
+    </header>
+
+    <main class="demo-page">
+      <div class="container">
+        <div class="page-intro">
+          <p>
+            There are three main ways to arrange things on a webpage: Flexbox,
+            Grid, and Float. This lesson shows you what each one does and when
+            to use them.
+          </p>
+          <div class="page-intro-links">
+            <a class="pill" href="#flexbox">Flexbox</a>
+            <a class="pill" href="#grid">Grid</a>
+            <a class="pill" href="#float">Float</a>
+            <a class="pill" href="#comparison">Comparison</a>
+            <a class="pill" href="#when-to-use">When to Use</a>
+          </div>
+        </div>
+
+        <section class="demo-block" id="flexbox">
+          <div class="demo-content">
+            <h2>
+              Flexbox
+              <span class="coming-soon-badge">Detailed Lesson Coming Soon</span>
+            </h2>
+            <p class="demo-description">
+              Flexbox arranges items in a single line - either a row (left to
+              right) or a column (top to bottom). It's great for spacing things
+              out evenly and centering stuff.
+            </p>
+            <div class="code-block">
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copy code"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                Copy
+              </button>
+              <pre><code>.container {
+  display: flex;
+  justify-content: space-around; /* horizontal alignment */
+  align-items: center;           /* vertical alignment */
+  gap: 10px;                     /* space between items */
+  flex-wrap: wrap;               /* wrap to next line */
+}
+</code></pre>
+            </div>
+            <div class="tip-box">
+              <strong>When to use:</strong> Use Flexbox when you want to put
+              things in a row or a column. Great for menus, buttons in a line,
+              or centering something on the page.
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Hover over the items</h4>
+            <div class="flex-demo">
+              <div class="flex-item">Item 1</div>
+              <div class="flex-item">Item 2</div>
+              <div class="flex-item">Item 3</div>
+              <div class="flex-item">Item 4</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="grid">
+          <div class="demo-content">
+            <h2>
+              CSS Grid
+              <span class="coming-soon-badge">Detailed Lesson Coming Soon</span>
+            </h2>
+            <p class="demo-description">
+              Grid lets you create rows AND columns at the same time. Think of
+              it like a table or a spreadsheet. You can place items exactly
+              where you want them.
+            </p>
+            <div class="code-block">
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copy code"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                Copy
+              </button>
+              <pre><code>.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-template-rows: repeat(2, 70px);   /* 2 rows, 70px each */
+  gap: 10px;
+}
+
+.header {
+  grid-column: span 2; /* span across 2 columns */
+}
+</code></pre>
+            </div>
+            <div class="tip-box">
+              <strong>When to use:</strong> Use Grid when you need both rows and
+              columns. Great for full page layouts, photo galleries, or anything
+              that looks like a grid.
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Hover over the items</h4>
+            <div class="grid-demo">
+              <div class="grid-item span-2">Header (span 2)</div>
+              <div class="grid-item">Nav</div>
+              <div class="grid-item">Main</div>
+              <div class="grid-item">Sidebar</div>
+              <div class="grid-item">Footer</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="float">
+          <div class="demo-content">
+            <h2>Float (Old Method)</h2>
+            <p class="demo-description">
+              Float was made to wrap text around images, like in a newspaper.
+              People used it for layouts before Flexbox and Grid existed. Now
+              it's outdated for layouts - just use it for text wrapping.
+            </p>
+            <div class="code-block">
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copy code"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                Copy
+              </button>
+              <pre><code>.image {
+  float: left;       /* or float: right */
+  margin-right: 15px;
+}
+
+.container {
+  overflow: hidden;  /* clearfix hack */
+}
+</code></pre>
+            </div>
+            <div class="warning-box">
+              <strong>Warning:</strong> Don't use float for page layouts. It
+              causes lots of problems and is hard to work with. Just use Flexbox
+              or Grid instead - they're easier and work better.
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Text wrapping around image</h4>
+            <div class="float-demo">
+              <div class="float-left">Image</div>
+              <p class="float-text">
+                This text wraps around the box on the left. This is what float
+                is actually for - making text flow around an image like in a
+                magazine or newspaper. This is the only thing you should use
+                float for nowadays.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div class="comparison-table" id="comparison">
+          <h3>Quick Comparison</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Flexbox</th>
+                <th>Grid</th>
+                <th>Float</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Direction</strong></td>
+                <td>One direction (row or column)</td>
+                <td>Both directions (rows and columns)</td>
+                <td>Just pushes left or right</td>
+              </tr>
+              <tr>
+                <td><strong>Best For</strong></td>
+                <td>Menus, buttons, centering</td>
+                <td>Full page layouts, galleries</td>
+                <td>Text around images only</td>
+              </tr>
+              <tr>
+                <td><strong>Easy to Use</strong></td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>No, causes problems</td>
+              </tr>
+              <tr>
+                <td><strong>Should You Use It?</strong></td>
+                <td>Yes, use it</td>
+                <td>Yes, use it</td>
+                <td>Only for text wrapping</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <section class="demo-block" id="when-to-use">
+          <div class="demo-content">
+            <h2>When to Use What?</h2>
+            <p class="demo-description">
+              Not sure which one to pick? Here's a simple guide.
+            </p>
+
+            <div class="use-cases-grid">
+              <div class="use-case-card flex-card">
+                <h4>Use Flexbox For:</h4>
+                <ul>
+                  <li>Navigation menus</li>
+                  <li>Cards in a row</li>
+                  <li>Centering things</li>
+                  <li>Spacing items evenly</li>
+                  <li>Buttons side by side</li>
+                </ul>
+              </div>
+
+              <div class="use-case-card grid-card">
+                <h4>Use Grid For:</h4>
+                <ul>
+                  <li>Whole page layouts</li>
+                  <li>Photo galleries</li>
+                  <li>Dashboard layouts</li>
+                  <li>Anything with rows AND columns</li>
+                </ul>
+              </div>
+
+              <div class="use-case-card float-card">
+                <h4>Use Float For:</h4>
+                <ul>
+                  <li>Text wrapping around images</li>
+                  <li>That's it. Nothing else.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tip-box" style="margin-top: 2rem">
+              <strong>Pro Tip:</strong> You can use both together. Use Grid for
+              the main page layout, then use Flexbox inside each section.
+            </div>
+          </div>
+        </section>
+
+        <div class="summary">
+          <h3>Summary</h3>
+          <ul>
+            <li><strong>Flexbox</strong> - puts things in a row or column.</li>
+            <li><strong>Grid</strong> - creates rows and columns together.</li>
+            <li>
+              <strong>Float</strong> - old method, only use for text around
+              images.
+            </li>
+            <li>
+              <strong>Best practice</strong> - use Grid + Flexbox together for
+              modern websites.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="footer-name">CSS Essentials</div>
+            <p class="footer-desc">
+              Short, practical demos for mastering advanced CSS.
+            </p>
+          </div>
+
+          <div class="footer-right">
+            <ul class="footer-links">
+              <li><a href="../">Home</a></li>
+              <li><a href="../#topics">Topics</a></li>
+              <li>
+                <a
+                  href="https://github.com/prynixdevs/CSS-Essentials"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </li>
+            </ul>
+
+            <div class="footer-credits">
+              <span
+                >Workshop by
+                <a
+                  href="https://github.com/prynixdevs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Prynix</a
+                ></span
+              >
+              <span
+                >Built by
+                <a
+                  href="https://github.com/prasoonkandel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Prasoon Kandel</a
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 CSS Essentials Workshop. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
