@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudo-Class Selectors - CSS Essentials</title>
+    <link rel="icon" href="../favicon.png" />
+    <link rel="shortcut icon" href="../favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/page.css" />
+  </head>
+  <body class="ps-page">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="../" class="nav-logo">
+            <img src="../prynix.png" alt="Prynix Logo" class="logo-img" />
+            <span class="logo-title">CSS Essentials</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <svg
+              class="nav-toggle-icon"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
+          <div class="nav-links" id="nav-links">
+            <a href="../#about">About</a>
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-dropdown-toggle"
+                aria-expanded="false"
+                aria-controls="nav-dropdown-menu"
+              >
+                Workshop Topics <span class="nav-dropdown-caret">▾</span>
+              </button>
+              <div class="nav-dropdown-menu" id="nav-dropdown-menu">
+                <a href="../#topics">All Topics</a>
+                <a href="../pseudo-selectors/">Pseudo-Class Selectors</a>
+                <a href="#" class="disabled-link">CSS Grid Layouts</a>
+                <a href="#" class="disabled-link">Flexbox Mastery</a>
+                <a href="#" class="disabled-link">Animations & Transitions</a>
+                <a href="#" class="disabled-link">CSS Variables</a>
+                <a href="#" class="disabled-link">Advanced Selectors</a>
+              </div>
+            </div>
+            <a
+              href="https://github.com/prynixdevs/CSS-Essentials"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-cta"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container">
+        <a href="../" class="back-link">← Back to Home</a>
+        <h1>Pseudo-Class Selectors</h1>
+        <p>Style elements based on state (hover/focus/active) and position.</p>
+      </div>
+    </header>
+
+    <main class="demo-page">
+      <div class="container">
+        <div class="page-intro">
+          <p>
+            Pseudo-classes let you style elements based on user interaction and
+            where an element sits in the DOM.
+          </p>
+          <div class="page-intro-links">
+            <a class="pill" href="#hover">:hover</a>
+            <a class="pill" href="#focus">:focus</a>
+            <a class="pill" href="#active">:active</a>
+            <a class="pill" href="#nth">:nth-child()</a>
+            <a class="pill" href="#edges">:first-child/:last-child</a>
+          </div>
+        </div>
+
+        <section class="demo-block ps-hover" id="hover">
+          <div class="demo-content">
+            <h2>:hover</h2>
+            <p class="demo-description">
+              Applies when the pointer is over an element.
+            </p>
+            <div class="code-block">
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copy code"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Base Style */
+.ps-page .demo-button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Space Grotesk", "Montserrat", sans-serif;
+}
+
+/* Pseudo Class */
+.ps-hover .demo-button:hover {
+  background: var(--primary-dark);
+}
+</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it</h4>
+            <button class="demo-button" type="button">Hover me</button>
+          </div>
+        </section>
+
+        <section class="demo-block ps-focus" id="focus">
+          <div class="demo-content">
+            <h2>:focus</h2>
+            <p class="demo-description">
+              Applies when an element is focused (keyboard/tab or click). Great
+              for accessibility.
+            </p>
+            <div class="code-block">
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copy code"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Base Style */
+.ps-page .demo-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.875rem;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Pseudo Class */
+.ps-focus .demo-input:focus {
+  border-color: var(--primary);
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it</h4>
+            <input
+              class="demo-input"
+              type="text"
+              placeholder="Click or press Tab"
+            />
+          </div>
+        </section>
+
+        <section class="demo-block ps-active" id="active">
+          <div class="demo-content">
+            <h2>:active</h2>
+            <p class="demo-description">
+              Applies while you are pressing/clicking an element.
+            </p>
+            <div class="code-block">
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copy code"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Base Style */
+.ps-page .demo-button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Space Grotesk", "Montserrat", sans-serif;
+}
+
+/* Pseudo Class */
+.ps-active .demo-button:active {
+  transform: translateY(1px);
+  background: var(--primary-dark);
+}
+</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it</h4>
+            <button class="demo-button" type="button">Press and hold</button>
+          </div>
+        </section>
+
+        <section class="demo-block ps-nth" id="nth">
+          <div class="demo-content">
+            <h2>:nth-child()</h2>
+            <p class="demo-description">
+              Targets elements by position. Example: style odd/even rows.
+            </p>
+            <div class="code-block">
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copy code"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Base Style */
+.demo-item {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Pseudo Class */
+.demo-item:nth-child(odd) {
+  background: var(--primary);
+  color: white;
+}
+
+.demo-item:nth-child(even) {
+  background: var(--accent-2);
+  color: var(--dark);
+}
+</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it</h4>
+            <div class="nth-child-demo" role="list">
+              <div class="demo-item" role="listitem">Item 1</div>
+              <div class="demo-item" role="listitem">Item 2</div>
+              <div class="demo-item" role="listitem">Item 3</div>
+              <div class="demo-item" role="listitem">Item 4</div>
+              <div class="demo-item" role="listitem">Item 5</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block ps-edges" id="edges">
+          <div class="demo-content">
+            <h2>:first-child & :last-child</h2>
+            <p class="demo-description">
+              Style the first/last item differently (menus, lists, chips).
+            </p>
+            <div class="code-block">
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copy code"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Base Style */
+.list-item {
+  padding: 1rem;
+  background: #e0e0e0;
+  color: var(--dark);
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 6px;
+}
+
+/* Pseudo Class */
+.list-item:first-child {
+  background: var(--primary);
+  color: white;
+}
+
+.list-item:last-child {
+  background: var(--accent-2);
+  color: var(--dark);
+}
+</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it</h4>
+            <div class="first-last-demo" role="list">
+              <div class="list-item" role="listitem">First</div>
+              <div class="list-item" role="listitem">Middle</div>
+              <div class="list-item" role="listitem">Middle</div>
+              <div class="list-item" role="listitem">Last</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="comparison-table">
+          <h3>Quick Reference</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Pseudo-Class</th>
+                <th>Triggers When</th>
+                <th>Common Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>:hover</code></td>
+                <td>Pointer is over element</td>
+                <td>Hover feedback</td>
+              </tr>
+              <tr>
+                <td><code>:focus</code></td>
+                <td>Element is focused</td>
+                <td>Accessible focus styles</td>
+              </tr>
+              <tr>
+                <td><code>:active</code></td>
+                <td>Element is being pressed</td>
+                <td>Pressed state</td>
+              </tr>
+              <tr>
+                <td><code>:nth-child(n)</code></td>
+                <td>Matches by index</td>
+                <td>Striped lists/tables</td>
+              </tr>
+              <tr>
+                <td><code>:first-child</code></td>
+                <td>First child in container</td>
+                <td>First item styling</td>
+              </tr>
+              <tr>
+                <td><code>:last-child</code></td>
+                <td>Last child in container</td>
+                <td>Last item styling</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="summary">
+          <h3>Summary</h3>
+          <ul>
+            <li><strong>:hover</strong> adds hover feedback.</li>
+            <li><strong>:focus</strong> is key for keyboard accessibility.</li>
+            <li><strong>:active</strong> covers pressed state.</li>
+            <li><strong>:nth-child()</strong> targets positions/patterns.</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="footer-name">CSS Essentials</div>
+            <p class="footer-desc">
+              Short, practical demos for mastering advanced CSS.
+            </p>
+          </div>
+
+          <div class="footer-right">
+            <ul class="footer-links">
+              <li><a href="../">Home</a></li>
+              <li><a href="../#topics">Topics</a></li>
+              <li>
+                <a
+                  href="https://github.com/prynixdevs/CSS-Essentials"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </li>
+            </ul>
+
+            <div class="footer-credits">
+              <span
+                >Workshop by
+                <a
+                  href="https://github.com/prynixdevs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Prynix</a
+                ></span
+              >
+              <span
+                >Built by
+                <a
+                  href="https://github.com/prasoonkandel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Prasoon Kandel</a
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 CSS Essentials Workshop. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

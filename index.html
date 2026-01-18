@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced CSS Workshop</title>
+    <link rel="icon" href="./favicon.png" />
+    <link rel="shortcut-icon" href="./favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="./" class="nav-logo">
+            <img src="prynix.png" alt="Prynix Logo" class="logo-img" />
+            <span class="logo-title">CSS Essentials</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <svg
+              class="nav-toggle-icon"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
+          <div class="nav-links" id="nav-links">
+            <a href="#about">About</a>
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-dropdown-toggle"
+                aria-expanded="false"
+                aria-controls="nav-dropdown-menu"
+              >
+                Workshop Topics <span class="nav-dropdown-caret">▾</span>
+              </button>
+              <div class="nav-dropdown-menu" id="nav-dropdown-menu">
+                <a href="#topics">All Topics</a>
+                <a href="pseudo-selectors/">Pseudo-Class Selectors</a>
+                <a href="#" class="disabled-link">CSS Grid Layouts</a>
+                <a href="#" class="disabled-link">Flexbox Mastery</a>
+                <a href="#" class="disabled-link">Animations & Transitions</a>
+                <a href="#" class="disabled-link">CSS Variables</a>
+                <a href="#" class="disabled-link">Advanced Selectors</a>
+              </div>
+            </div>
+            <a
+              href="https://github.com/prynixdevs/CSS-Essentials"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-cta"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <p class="hero-label">CSS Essentials Workshop</p>
+          <h1 class="hero-title">Learn CSS the right way.</h1>
+          <p class="hero-desc">
+            No fluff. Just practical examples, interactive demos, and everything
+            you need to actually understand pseudo-selectors, layouts, and
+            modern CSS.
+          </p>
+          <div class="hero-actions">
+            <a href="pseudo-selectors/" class="btn-start">Start with :hover</a>
+            <a href="#topics" class="btn-browse">See all topics</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="introduction">
+      <div class="container">
+        <h2 class="section-title">About This Workshop</h2>
+        <div class="intro-content">
+          <p>
+            Welcome to the Advanced CSS Workshop. This interactive learning
+            platform is designed to help you master advanced CSS concepts
+            through practical examples and hands-on exercises.
+          </p>
+          <p>
+            Each topic includes detailed explanations, live code examples, and
+            interactive demonstrations. You'll learn by doing, experimenting
+            with real CSS properties and seeing the results instantly.
+          </p>
+          <p>
+            Whether you're building modern web layouts, creating interactive
+            components, or adding sophisticated styling to your projects, this
+            workshop will give you the skills you need.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics" class="topics">
+      <div class="container">
+        <h2 class="section-title">Workshop Topics</h2>
+        <div class="topics-grid">
+          <a href="pseudo-selectors/" class="topic-card">
+            <h3>Pseudo-Class Selectors</h3>
+            <p>Learn :hover, :focus, :nth-child, and more</p>
+            <span class="badge">Available</span>
+          </a>
+          <div class="topic-card disabled">
+            <h3>CSS Grid Layouts</h3>
+            <p>Build complex responsive layouts</p>
+            <span class="badge soon">Coming Soon</span>
+          </div>
+          <div class="topic-card disabled">
+            <h3>Flexbox Mastery</h3>
+            <p>Align and distribute elements</p>
+            <span class="badge soon">Coming Soon</span>
+          </div>
+          <div class="topic-card disabled">
+            <h3>Animations & Transitions</h3>
+            <p>Bring designs to life with motion</p>
+            <span class="badge soon">Coming Soon</span>
+          </div>
+          <div class="topic-card disabled">
+            <h3>CSS Variables</h3>
+            <p>Create maintainable stylesheets</p>
+            <span class="badge soon">Coming Soon</span>
+          </div>
+          <div class="topic-card disabled">
+            <h3>Advanced Selectors</h3>
+            <p>Target elements with precision</p>
+            <span class="badge soon">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="footer-name">CSS Essentials</div>
+            <p class="footer-desc">
+              Master advanced CSS concepts through practical examples and
+              hands-on exercises.
+            </p>
+          </div>
+
+          <div class="footer-right">
+            <ul class="footer-links">
+              <li><a href="#about">About</a></li>
+              <li><a href="#topics">Topics</a></li>
+              <li>
+                <a
+                  href="https://github.com/prynixdevs/CSS-Essentials"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </li>
+            </ul>
+
+            <div class="footer-credits">
+              <span
+                >Workshop by
+                <a
+                  href="https://github.com/prynixdevs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Prynix</a
+                ></span
+              >
+              <span
+                >Built by
+                <a
+                  href="https://github.com/prasoonkandel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Prasoon Kandel</a
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 CSS Essentials Workshop. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

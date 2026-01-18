@@ -1,0 +1,263 @@
+.hero {
+  padding: 8rem 0 6rem;
+  background: var(--dark);
+  color: white;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  font-family: "Poppins", "Space Grotesk", sans-serif;
+}
+
+.hero-desc {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-start {
+  position: relative;
+  background: var(--accent);
+  color: var(--dark);
+  padding: 0.95rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  border: none;
+  overflow: hidden;
+}
+
+.btn-start::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--dark);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.btn-start:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-browse {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.95rem 1.75rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+}
+
+.btn-browse::before {
+  content: "→";
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.2s ease;
+}
+
+.btn-browse:hover {
+  color: white;
+  padding-right: 2.5rem;
+}
+
+.btn-browse:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.introduction {
+  padding: 6rem 0;
+  background: var(--bg);
+}
+
+.intro-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.intro-content p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+}
+
+.topics {
+  padding: 6rem 0;
+  background: var(--bg-alt);
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.topic-card {
+  background: var(--bg);
+  padding: 2.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 3px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.topic-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topic-card:hover::before {
+  transform: scaleX(1);
+}
+
+.topic-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+}
+
+.topic-card.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.topic-card.disabled::before {
+  display: none;
+}
+
+.topic-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+  font-weight: 700;
+  font-family: "Space Grotesk", "Montserrat", sans-serif;
+  transition: color 0.3s;
+}
+
+.topic-card:hover h3 {
+  color: var(--primary);
+}
+
+.topic-card p {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge.soon {
+  background: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 6rem 0 4rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn-start,
+  .btn-browse {
+    text-align: center;
+  }
+
+  .introduction,
+  .topics {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    margin-bottom: 2rem;
+  }
+
+  .topics-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .topic-card {
+    padding: 2rem;
+  }
+
+  .topic-card h3 {
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 5rem 0 3rem;
+  }
+
+  .introduction,
+  .topics {
+    padding: 2rem 0;
+  }
+
+  .topic-card {
+    padding: 1.5rem;
+  }
+
+  .intro-content p {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,233 @@
+.page-header {
+  background: var(--dark);
+  color: white;
+  padding: 3rem 0;
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  opacity: 1;
+}
+
+.back-link {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  opacity: 1;
+  transition: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.demo-page {
+  padding: 4rem 0;
+}
+
+.page-intro {
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.page-intro p {
+  margin: 0 0 1rem;
+  color: var(--text-light);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.page-intro-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  font-family: "Space Grotesk", "Montserrat", sans-serif;
+  font-size: 0.92rem;
+}
+
+.pill:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.ps-page .demo-button {
+  position: relative;
+  overflow: visible;
+}
+
+.ps-page .demo-button::before {
+  display: none;
+}
+
+.ps-page .demo-button:hover,
+.ps-page .demo-button:active {
+  background: var(--primary);
+}
+
+.ps-page .list-item:hover {
+  transform: none;
+}
+
+.ps-page .ps-hover .demo-button:hover {
+  background: var(--primary-dark);
+}
+
+.ps-page .ps-active .demo-button:active {
+  transform: translateY(2px);
+  background: var(--primary-dark);
+}
+
+.ps-page .ps-focus .demo-input:focus {
+  border-color: var(--primary);
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.demo-block {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 2.25rem;
+  margin-bottom: 3rem;
+  border: 2px solid var(--border);
+  border-left: 6px solid var(--primary);
+  box-shadow: none;
+  content-visibility: auto;
+  contain-intrinsic-size: 600px;
+}
+
+.demo-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.demo-description {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.demo-description code {
+  background: var(--bg-alt);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-family: "Courier New", monospace;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.code-block {
+  background: var(--dark);
+  color: white;
+  padding: 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.code-block pre {
+  margin: 0;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--dark-alt);
+  color: white;
+  border: 1px solid var(--primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.copy-btn:hover {
+  background: var(--dark-alt);
+}
+
+.copy-btn.copied {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--dark);
+}
+
+.copy-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.code-block code {
+  font-family: "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.demo-visual {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: var(--bg-alt);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.demo-visual h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.demo-button:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .demo-block {
+    padding: 1.75rem;
+  }
+
+  .demo-content h2 {
+    font-size: 1.5rem;
+  }
+}
