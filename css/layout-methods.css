@@ -1,3 +1,23 @@
+.flex-demo {
+  display: flex;
+  gap: 18px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  min-height: 70px;
+  flex: 1 1 90px;
+  text-align: center;
+}
 /* Layout Methods Page Specific Styles */
 .lm-page .demo-visual {
   width: 100%;
@@ -20,13 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
   transition: transform 0.2s;
-  font-family: "Space Grotesk", "Montserrat", sans-serif;
-}
-
-.grid-item:hover {
-  /* No size change on hover */
 }
 
 .grid-item.span-2 {
@@ -52,14 +66,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-family: "Space Grotesk", "Montserrat", sans-serif;
 }
 
 .float-text {
   color: var(--text-light);
   line-height: 1.6;
-  font-size: 0.95rem;
 }
 
 /* Coming Soon Badge */
@@ -69,11 +80,8 @@
   color: var(--dark);
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
   margin-left: 0.75rem;
   vertical-align: middle;
-  font-family: "Space Grotesk", "Montserrat", sans-serif;
 }
 
 /* Warning/Tip Boxes */
@@ -131,15 +139,12 @@
 
 .use-case-card h4 {
   margin-bottom: 0.75rem;
-  font-size: 1rem;
   color: var(--text);
-  font-family: "Space Grotesk", "Montserrat", sans-serif;
 }
 
 .use-case-card ul {
   color: var(--text-light);
   padding-left: 1.25rem;
-  font-size: 0.9rem;
 }
 
 .use-case-card li {
@@ -150,32 +155,66 @@
   width: 100%;
   border-collapse: collapse;
   margin: 32px 0 40px 0;
+  overflow-x: auto;
+  display: block;
+  max-width: 100vw;
 }
 
-@media (max-width: 600px) {
-  .grid-demo {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 700px) {
+  .comparison-table table {
+    min-width: 500px;
+    font-size: 0.95em;
+  }
+  .comparison-table {
+    overflow-x: auto;
+    display: block;
+    -webkit-overflow-scrolling: touch;
+  }
+  .summary ul {
+    padding-left: 1.2em;
+    font-size: 1em;
+  }
+  .summary {
+    margin-bottom: 1.5em;
+  }
+  .use-cases-grid {
+    grid-template-columns: 1fr;
+    gap: 1em;
   }
 }
 
-/* Navigation Buttons */
-.page-nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin: 1.5rem 0;
+@media (max-width: 500px) {
+  .comparison-table table {
+    min-width: 350px;
+    font-size: 0.9em;
+  }
+  .summary ul {
+    font-size: 0.98em;
+  }
 }
 
-.page-nav-btn {
-  background: var(--primary);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.2s;
-  font-family: "Space Grotesk", "Montserrat", sans-serif;
-}
+@media (max-width: 600px) {
+  @media (max-width: 600px) {
+    .grid-demo {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 
-.page-nav-btn:hover {
-  background: var(--primary-dark);
+  /* Navigation Buttons */
+  .page-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+  }
+
+  .page-nav-btn {
+    background: var(--primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+    font-family: "Space Grotesk", "Montserrat", sans-serif;
+  }
 }

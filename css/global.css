@@ -1,3 +1,36 @@
+@media (max-width: 700px) {
+  .summary {
+    padding: 1.2rem;
+    margin-top: 2rem;
+  }
+  .summary h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .summary ul {
+    font-size: 1em;
+    padding-left: 1em;
+  }
+  .footer-inner {
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.5rem 0;
+  }
+  .footer-brand {
+    min-width: 0;
+  }
+  .footer-right {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .footer-links {
+    justify-content: flex-start;
+    gap: 0.5rem 1rem;
+  }
+  .footer-credits {
+    text-align: left;
+  }
+}
 .navbar {
   position: fixed;
   top: 0;
