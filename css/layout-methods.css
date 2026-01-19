@@ -94,6 +94,7 @@
 /* Warning/Tip Boxes */
 .tip-box {
   background: var(--bg-alt);
+  color: var(--text);
   border-left: 4px solid var(--accent-2);
   padding: 1rem 1.25rem;
   border-radius: 0 8px 8px 0;
@@ -127,6 +128,7 @@
 
 .use-case-card {
   background: var(--bg-alt);
+  color: var(--text);
   border-radius: 8px;
   padding: 1.25rem;
   border-left: 4px solid var(--primary);

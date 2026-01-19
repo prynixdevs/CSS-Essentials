@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Variables - CSS Essentials</title>
+    <link rel="icon" href="../favicon.png" />
+    <link rel="shortcut icon" href="../favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/page.css" />
+    <link rel="stylesheet" href="../css/variables.css" />
+  </head>
+  <body class="vars-page">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="../" class="nav-logo">
+            <img src="../prynix.png" alt="Prynix Logo" class="logo-img" />
+            <span class="logo-title">CSS Essentials</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <svg
+              class="nav-toggle-icon"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
+          <div class="nav-links" id="nav-links">
+            <a href="../">Home</a>
+            <a href="../#about">About</a>
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-dropdown-toggle"
+                aria-expanded="false"
+                aria-controls="nav-dropdown-menu"
+              >
+                Workshop Topics <span class="nav-dropdown-caret">▾</span>
+              </button>
+              <div class="nav-dropdown-menu" id="nav-dropdown-menu">
+                <a href="../#topics">All Topics</a>
+                <a href="../pseudo-selectors/">Pseudo-Class Selectors</a>
+                <a href="../layout-methods/">Layout Methods</a>
+                <a href="../flexbox-mastery/">Flexbox Mastery</a>
+                <a href="../css-grid/">CSS Grid Layouts</a>
+                <a href="../animations/">Animations & Transitions</a>
+                <a href="../css-variables/">CSS Variables</a>
+                <a href="../advanced-selectors/">Advanced Selectors</a>
+              </div>
+            </div>
+            <a
+              href="https://github.com/prynixdevs/CSS-Essentials"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-cta"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container">
+        <a href="../" class="back-link">← Back to Home</a>
+        <h1>CSS Variables (Custom Properties)</h1>
+        <p>One place to change everything. Reusable values throughout your stylesheet.</p>
+      </div>
+    </header>
+
+    <main class="demo-page">
+      <div class="container">
+        <div class="page-nav-buttons">
+          <a href="../animations/" class="page-nav-btn"
+            >← Previous: Animations & Transitions</a
+          >
+          <a href="../advanced-selectors/" class="page-nav-btn"
+            >Next: Advanced Selectors →</a
+          >
+        </div>
+        <div class="page-intro">
+          <p>
+            CSS Variables (Custom Properties) let you store and reuse values. Define them in
+            <code>:root</code> for global scope, or in selectors for local scope. Change one variable,
+            and everything updates.
+          </p>
+          <div class="quick-links">
+            <a class="pill" href="#declaration">Declaration</a>
+            <a class="pill" href="#usage">Usage</a>
+            <a class="pill" href="#scoping">Scoping</a>
+            <a class="pill" href="#fallbacks">Fallbacks</a>
+            <a class="pill" href="#javascript">JavaScript</a>
+          </div>
+        </div>
+
+        <section class="demo-block" id="declaration">
+          <div class="demo-content">
+            <h2>Declaring Variables</h2>
+            <p class="demo-description">
+              Define custom properties with <code>--variable-name: value</code>. Convention uses two
+              dashes. Define in <code>:root</code> for global availability.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>:root {
+  --primary: #1e78a8;
+  --primary-dark: #145b7d;
+  --spacing: 1rem;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+body {
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Check your browser's color scheme</h4>
+            <div class="vars-demo-declaration">
+              <div class="vars-box">Primary Color</div>
+              <div class="vars-box vars-dark">Dark Variant</div>
+              <div class="vars-box vars-accent">Accent Color</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="usage">
+          <div class="demo-content">
+            <h2>Using Variables</h2>
+            <p class="demo-description">
+              Reference variables with <code>var(--variable-name)</code>. Use anywhere a normal CSS
+              value would go: colors, sizes, spacing, etc.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Define */
+:root {
+  --primary: #1e78a8;
+  --padding: 1.5rem;
+}
+
+/* Use */
+.button {
+  background: var(--primary);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed);
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Consistent styling with variables</h4>
+            <div class="vars-demo-usage">
+              <button class="vars-button">Button 1</button>
+              <button class="vars-button">Button 2</button>
+              <div class="vars-card">
+                <h4>Card with Variables</h4>
+                <p>Padding, border, and spacing all use CSS variables.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="scoping">
+          <div class="demo-content">
+            <h2>Variable Scoping</h2>
+            <p class="demo-description">
+              Variables defined in <code>:root</code> are global. Define in selectors for local scope.
+              Child elements inherit parent variables.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Global */
+:root {
+  --primary: blue;
+}
+
+/* Local to .container */
+.container {
+  --primary: green; /* overrides global in this scope */
+}
+
+/* Local to .dark-theme */
+.dark-theme {
+  --bg: #1f2937;
+  --text: #ffffff;
+}
+
+/* Children inherit */
+.container .button {
+  background: var(--primary); /* uses local green */
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Different color scopes</h4>
+            <div class="vars-demo-scope-parent">
+              <div class="vars-demo-scope-box">Global Scope</div>
+              <div class="vars-demo-scope-child">Local Scope</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="fallbacks">
+          <div class="demo-content">
+            <h2>Fallback Values</h2>
+            <p class="demo-description">
+              Provide fallback values if a variable isn't set.
+              <code>var(--variable, fallback-value)</code>. Useful for browser compatibility.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* If --custom doesn't exist, use red */
+.box {
+  background: var(--custom, red);
+}
+
+/* Multi-level fallback */
+.text {
+  color: var(--heading-color, var(--text-color, black));
+}
+
+/* Fallback with calculation */
+.padding {
+  padding: var(--padding, 1rem);
+  margin: var(--margin, calc(var(--padding, 1rem) * 2));
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Fallback example</h4>
+            <div class="vars-demo-fallback">
+              <div class="vars-fallback-defined">Has variable (blue)</div>
+              <div class="vars-fallback-undefined">No variable (fallback: red)</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="javascript">
+          <div class="demo-content">
+            <h2>JavaScript Integration</h2>
+            <p class="demo-description">
+              Change CSS variables dynamically with JavaScript. Get and set values with
+              <code>getPropertyValue()</code> and <code>setProperty()</code>.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>const root = document.documentElement;
+
+/* Get a variable */
+const color = root.style.getPropertyValue('--primary');
+
+/* Set a variable */
+root.style.setProperty('--primary', '#ff0000');
+
+/* Theme switcher */
+document.querySelectorAll('[data-theme]').forEach((btn) => {
+  btn.addEventListener('click', function() {
+    root.style.setProperty('--primary', this.dataset.color);
+  });
+});</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Change colors dynamically</h4>
+            <div class="vars-demo-js-controls">
+              <button class="vars-js-btn" data-color="#1e78a8">Blue</button>
+              <button class="vars-js-btn" data-color="#d97706">Orange</button>
+              <button class="vars-js-btn" data-color="#ec4899">Pink</button>
+              <button class="vars-js-btn" data-color="#10b981">Green</button>
+            </div>
+            <div class="vars-js-demo"></div>
+          </div>
+        </section>
+
+        <div class="comparison-table">
+          <h3>CSS Variables vs Preprocessor Variables</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>CSS Variables</th>
+                <th>SASS/LESS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Runtime Changes</td>
+                <td>✅ Yes (dynamic)</td>
+                <td>❌ No (compile-time)</td>
+              </tr>
+              <tr>
+                <td>JavaScript Access</td>
+                <td>✅ Yes</td>
+                <td>❌ No</td>
+              </tr>
+              <tr>
+                <td>Media Queries</td>
+                <td>✅ Yes (can override in MQ)</td>
+                <td>❌ No</td>
+              </tr>
+              <tr>
+                <td>Inheritance</td>
+                <td>✅ Yes</td>
+                <td>❌ No</td>
+              </tr>
+              <tr>
+                <td>Math Operations</td>
+                <td>✅ calc()</td>
+                <td>✅ Native</td>
+              </tr>
+              <tr>
+                <td>Browser Support</td>
+                <td>✅ All modern browsers</td>
+                <td>✅ Compiled to CSS</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="summary">
+          <h3>Summary</h3>
+          <ul>
+            <li><strong>Define</strong> CSS variables with <code>--name: value</code> in any selector.</li>
+            <li><strong>:root</strong> provides global scope for application-wide variables.</li>
+            <li><strong>var(--name)</strong> retrieves variable values.</li>
+            <li><strong>Fallbacks:</strong> <code>var(--name, fallback)</code> provides defaults.</li>
+            <li><strong>Inheritance:</strong> Child elements inherit parent variables.</li>
+            <li><strong>Dynamic:</strong> Change variables with JavaScript at runtime.</li>
+            <li><strong>Theme switching:</strong> Perfect use case for CSS variables.</li>
+            <li><strong>calc():</strong> Combine variables in calculations.</li>
+          </ul>
+        </div>
+
+        <div class="page-nav-buttons">
+          <a href="../animations/" class="page-nav-btn"
+            >← Previous: Animations & Transitions</a
+          >
+          <a href="../advanced-selectors/" class="page-nav-btn"
+            >Next: Advanced Selectors →</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="footer-name">CSS Essentials</div>
+            <p class="footer-desc">Learn CSS the right way.</p>
+          </div>
+
+          <div class="footer-right">
+            <ul class="footer-links">
+              <li><a href="../#topics">Topics</a></li>
+              <li><a href="../#about">About</a></li>
+              <li>
+                <a href="https://github.com/prynixdevs/CSS-Essentials" target="_blank"
+                  >GitHub</a
+                >
+              </li>
+            </ul>
+
+            <div class="footer-credits">
+              <p>Made by <strong>Prasum Shrestha & Prasoon Kandel</strong></p>
+              <p>© 2026 CSS Essentials Workshop</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+      // JavaScript color changer demo
+      document.querySelectorAll('.vars-js-btn').forEach((btn) => {
+        btn.addEventListener('click', function () {
+          const color = this.dataset.color;
+          document.documentElement.style.setProperty('--demo-primary', color);
+          document.querySelectorAll('.vars-js-btn').forEach((b) => b.style.background = '');
+          this.style.background = color;
+        });
+      });
+    </script>
+  </body>
+</html>

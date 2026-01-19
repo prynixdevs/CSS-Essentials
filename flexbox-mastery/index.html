@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox Mastery - CSS Essentials</title>
+    <link rel="icon" href="../favicon.png" />
+    <link rel="shortcut icon" href="../favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/page.css" />
+    <link rel="stylesheet" href="../css/flexbox-mastery.css" />
+  </head>
+  <body class="fm-page">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="../" class="nav-logo">
+            <img src="../prynix.png" alt="Prynix Logo" class="logo-img" />
+            <span class="logo-title">CSS Essentials</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <svg
+              class="nav-toggle-icon"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
+          <div class="nav-links" id="nav-links">
+            <a href="../">Home</a>
+            <a href="../#about">About</a>
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-dropdown-toggle"
+                aria-expanded="false"
+                aria-controls="nav-dropdown-menu"
+              >
+                Workshop Topics <span class="nav-dropdown-caret">▾</span>
+              </button>
+              <div class="nav-dropdown-menu" id="nav-dropdown-menu">
+                <a href="../#topics">All Topics</a>
+                <a href="../pseudo-selectors/">Pseudo-Class Selectors</a>
+                <a href="../layout-methods/">Layout Methods</a>
+                <a href="../flexbox-mastery/">Flexbox Mastery</a>
+                <a href="../css-grid/">CSS Grid Layouts</a>
+                <a href="../animations/">Animations & Transitions</a>
+                <a href="../css-variables/">CSS Variables</a>
+                <a href="../advanced-selectors/">Advanced Selectors</a>
+              </div>
+            </div>
+            <a
+              href="https://github.com/prynixdevs/CSS-Essentials"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-cta"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container">
+        <a href="../" class="back-link">← Back to Home</a>
+        <h1>Flexbox Mastery</h1>
+        <p>Stop guessing, start aligning. Master flex properties for perfect layouts.</p>
+      </div>
+    </header>
+
+    <main class="demo-page">
+      <div class="container">
+        <div class="page-nav-buttons">
+          <a href="../layout-methods/" class="page-nav-btn"
+            >← Previous: Layout Methods</a
+          >
+          <a href="../css-grid/" class="page-nav-btn"
+            >Next: CSS Grid Layouts →</a
+          >
+        </div>
+        <div class="page-intro">
+          <p>
+            Flexbox is the most powerful tool for creating flexible, responsive layouts. Master
+            <code>flex-direction</code>, <code>justify-content</code>, <code>align-items</code>,
+            and more.
+          </p>
+          <div class="quick-links">
+            <a class="pill" href="#direction">Direction</a>
+            <a class="pill" href="#justify">Justify Content</a>
+            <a class="pill" href="#align">Align Items</a>
+            <a class="pill" href="#grow">Flex Grow/Shrink</a>
+            <a class="pill" href="#gap">Gap</a>
+          </div>
+        </div>
+
+        <section class="demo-block" id="direction">
+          <div class="demo-content">
+            <h2>flex-direction</h2>
+            <p class="demo-description">
+              Controls the direction items flow. Use <code>row</code> (default),
+              <code>column</code>, <code>row-reverse</code>, or <code>column-reverse</code>.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>.container {
+  display: flex;
+  flex-direction: row; /* row, column, row-reverse, column-reverse */
+}
+
+.item {
+  flex: 1;
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Toggle Direction</h4>
+            <div class="flex-demo-controls">
+              <button class="control-btn active" data-direction="row">Row</button>
+              <button class="control-btn" data-direction="column">Column</button>
+              <button class="control-btn" data-direction="row-reverse">Row Reverse</button>
+              <button class="control-btn" data-direction="column-reverse">Col Reverse</button>
+            </div>
+            <div class="flex-direction-demo flex-item-row">
+              <div class="flex-item">1</div>
+              <div class="flex-item">2</div>
+              <div class="flex-item">3</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="justify">
+          <div class="demo-content">
+            <h2>justify-content</h2>
+            <p class="demo-description">
+              Aligns items along the main axis. Options: <code>flex-start</code>,
+              <code>flex-end</code>, <code>center</code>, <code>space-between</code>,
+              <code>space-around</code>, <code>space-evenly</code>.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>.container {
+  display: flex;
+  justify-content: center;
+  /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Toggle Justify Content</h4>
+            <div class="flex-demo-controls">
+              <button class="control-btn active" data-justify="flex-start">Start</button>
+              <button class="control-btn" data-justify="center">Center</button>
+              <button class="control-btn" data-justify="flex-end">End</button>
+              <button class="control-btn" data-justify="space-between">Between</button>
+              <button class="control-btn" data-justify="space-around">Around</button>
+              <button class="control-btn" data-justify="space-evenly">Evenly</button>
+            </div>
+            <div class="flex-justify-demo">
+              <div class="flex-item-sm">A</div>
+              <div class="flex-item-sm">B</div>
+              <div class="flex-item-sm">C</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="align">
+          <div class="demo-content">
+            <h2>align-items</h2>
+            <p class="demo-description">
+              Aligns items along the cross axis. Options: <code>flex-start</code>,
+              <code>flex-end</code>, <code>center</code>, <code>stretch</code>, <code>baseline</code>.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>.container {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  /* flex-start, flex-end, center, stretch, baseline */
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Toggle Align Items</h4>
+            <div class="flex-demo-controls">
+              <button class="control-btn active" data-align="flex-start">Start</button>
+              <button class="control-btn" data-align="center">Center</button>
+              <button class="control-btn" data-align="flex-end">End</button>
+              <button class="control-btn" data-align="stretch">Stretch</button>
+            </div>
+            <div class="flex-align-demo">
+              <div class="flex-item-varying">A</div>
+              <div class="flex-item-varying varying-large">B</div>
+              <div class="flex-item-varying">C</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="grow">
+          <div class="demo-content">
+            <h2>flex-grow & flex-shrink</h2>
+            <p class="demo-description">
+              <code>flex-grow</code> makes items expand to fill space. <code>flex-shrink</code>
+              controls how much they shrink. Use shorthand <code>flex: 1</code> for equal growth.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>.container {
+  display: flex;
+  gap: 1rem;
+}
+
+.item {
+  flex: 1; /* shorthand for grow: 1, shrink: 1 */
+}
+
+.item.large {
+  flex: 2; /* grows twice as much */
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - See how flex ratio works</h4>
+            <div class="flex-grow-demo">
+              <div class="flex-item flex-grow-1">flex: 1</div>
+              <div class="flex-item flex-grow-2">flex: 2</div>
+              <div class="flex-item flex-grow-1">flex: 1</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="gap">
+          <div class="demo-content">
+            <h2>gap Property</h2>
+            <p class="demo-description">
+              <code>gap</code> creates space between flex items. Much cleaner than margins!
+              Supported in all modern browsers.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>.container {
+  display: flex;
+  gap: 1rem; /* row gap and column gap */
+  gap: 1rem 2rem; /* row gap, column gap */
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Items with gap</h4>
+            <div class="flex-gap-demo">
+              <div class="flex-item">Item 1</div>
+              <div class="flex-item">Item 2</div>
+              <div class="flex-item">Item 3</div>
+              <div class="flex-item">Item 4</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="comparison-table">
+          <h3>Flexbox Properties Quick Reference</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Values</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>display</code></td>
+                <td><code>flex</code></td>
+                <td>Enable flexbox on container</td>
+              </tr>
+              <tr>
+                <td><code>flex-direction</code></td>
+                <td><code>row</code>, <code>column</code>, <code>row-reverse</code>, <code>column-reverse</code></td>
+                <td>Direction of flex items</td>
+              </tr>
+              <tr>
+                <td><code>justify-content</code></td>
+                <td><code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>space-between</code>, etc.</td>
+                <td>Align items on main axis</td>
+              </tr>
+              <tr>
+                <td><code>align-items</code></td>
+                <td><code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>stretch</code></td>
+                <td>Align items on cross axis</td>
+              </tr>
+              <tr>
+                <td><code>flex</code></td>
+                <td><code>1</code>, <code>2</code>, etc.</td>
+                <td>Shorthand for grow, shrink, basis</td>
+              </tr>
+              <tr>
+                <td><code>gap</code></td>
+                <td><code>1rem</code>, <code>1rem 2rem</code></td>
+                <td>Space between items</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="summary">
+          <h3>Summary</h3>
+          <ul>
+            <li><strong>Start with display: flex</strong> to enable flexbox on any container.</li>
+            <li><strong>flex-direction</strong> sets the main axis (row or column).</li>
+            <li><strong>justify-content</strong> aligns items along the main axis.</li>
+            <li><strong>align-items</strong> aligns items along the cross axis.</li>
+            <li><strong>flex: 1</strong> makes items grow equally and shrink proportionally.</li>
+            <li><strong>gap</strong> creates consistent spacing without margin hacks.</li>
+          </ul>
+        </div>
+
+        <div class="page-nav-buttons">
+          <a href="../layout-methods/" class="page-nav-btn"
+            >← Previous: Layout Methods</a
+          >
+          <a href="../css-grid/" class="page-nav-btn"
+            >Next: CSS Grid Layouts →</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="footer-name">CSS Essentials</div>
+            <p class="footer-desc">Learn CSS the right way.</p>
+          </div>
+
+          <div class="footer-right">
+            <ul class="footer-links">
+              <li><a href="../#topics">Topics</a></li>
+              <li><a href="../#about">About</a></li>
+              <li>
+                <a href="https://github.com/prynixdevs/CSS-Essentials" target="_blank"
+                  >GitHub</a
+                >
+              </li>
+            </ul>
+
+            <div class="footer-credits">
+              <p>Made by <strong>Prasum Shrestha & Prasoon Kandel</strong></p>
+              <p>© 2026 CSS Essentials Workshop</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+      // Flexbox demo controls
+      document.querySelectorAll('[data-direction]').forEach((btn) => {
+        btn.addEventListener('click', function () {
+          const demo = document.querySelector('.flex-direction-demo');
+          const direction = this.dataset.direction;
+          demo.className = `flex-direction-demo flex-item-${direction}`;
+          document.querySelectorAll('[data-direction]').forEach((b) => b.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      document.querySelectorAll('[data-justify]').forEach((btn) => {
+        btn.addEventListener('click', function () {
+          const demo = document.querySelector('.flex-justify-demo');
+          const justify = this.dataset.justify;
+          demo.style.justifyContent = justify;
+          document.querySelectorAll('[data-justify]').forEach((b) => b.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      document.querySelectorAll('[data-align]').forEach((btn) => {
+        btn.addEventListener('click', function () {
+          const demo = document.querySelector('.flex-align-demo');
+          const align = this.dataset.align;
+          demo.style.alignItems = align;
+          document.querySelectorAll('[data-align]').forEach((b) => b.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      // Initialize demos with default values
+      window.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.flex-justify-demo').style.justifyContent = 'flex-start';
+        document.querySelector('.flex-align-demo').style.alignItems = 'flex-start';
+      });
+    </script>
+  </body>
+</html>

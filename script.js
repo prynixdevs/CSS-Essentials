@@ -1,3 +1,56 @@
+// Theme Toggle System
+(function initTheme() {
+  const themeToggle = document.querySelector('.theme-toggle');
+  const html = document.documentElement;
+  const lightIcon = document.querySelector('.theme-icon-light');
+  const darkIcon = document.querySelector('.theme-icon-dark');
+  
+  // Get saved theme or use system preference
+  const getSavedTheme = () => localStorage.getItem('theme');
+  const getSystemTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  
+  // Apply theme
+  const applyTheme = (theme) => {
+    if (theme === 'dark') {
+      html.setAttribute('data-theme', 'dark');
+      lightIcon.style.display = 'none';
+      darkIcon.style.display = 'block';
+    } else {
+      html.setAttribute('data-theme', 'light');
+      lightIcon.style.display = 'block';
+      darkIcon.style.display = 'none';
+    }
+    localStorage.setItem('theme', theme);
+  };
+  
+  // Initialize theme without transition on first load
+  html.classList.add('no-transition');
+  const savedTheme = getSavedTheme();
+  const initialTheme = savedTheme || getSystemTheme();
+  applyTheme(initialTheme);
+  
+  // Re-enable transitions after initial load
+  requestAnimationFrame(() => {
+    html.classList.remove('no-transition');
+  });
+  
+  // Theme toggle button handler
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme') || getSystemTheme();
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    });
+  }
+  
+  // Listen to system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!getSavedTheme()) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+})();
+
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();

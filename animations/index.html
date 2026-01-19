@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animations & Transitions - CSS Essentials</title>
+    <link rel="icon" href="../favicon.png" />
+    <link rel="shortcut icon" href="../favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/page.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+  </head>
+  <body class="anim-page">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="../" class="nav-logo">
+            <img src="../prynix.png" alt="Prynix Logo" class="logo-img" />
+            <span class="logo-title">CSS Essentials</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <svg
+              class="nav-toggle-icon"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
+          <div class="nav-links" id="nav-links">
+            <a href="../">Home</a>
+            <a href="../#about">About</a>
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-dropdown-toggle"
+                aria-expanded="false"
+                aria-controls="nav-dropdown-menu"
+              >
+                Workshop Topics <span class="nav-dropdown-caret">▾</span>
+              </button>
+              <div class="nav-dropdown-menu" id="nav-dropdown-menu">
+                <a href="../#topics">All Topics</a>
+                <a href="../pseudo-selectors/">Pseudo-Class Selectors</a>
+                <a href="../layout-methods/">Layout Methods</a>
+                <a href="../flexbox-mastery/">Flexbox Mastery</a>
+                <a href="../css-grid/">CSS Grid Layouts</a>
+                <a href="../animations/">Animations & Transitions</a>
+                <a href="../css-variables/">CSS Variables</a>
+                <a href="../advanced-selectors/">Advanced Selectors</a>
+              </div>
+            </div>
+            <a
+              href="https://github.com/prynixdevs/CSS-Essentials"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-cta"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container">
+        <a href="../" class="back-link">← Back to Home</a>
+        <h1>Animations & Transitions</h1>
+        <p>Make things move without JavaScript. Smooth, performant motion with CSS.</p>
+      </div>
+    </header>
+
+    <main class="demo-page">
+      <div class="container">
+        <div class="page-nav-buttons">
+          <a href="../css-grid/" class="page-nav-btn"
+            >← Previous: CSS Grid Layouts</a
+          >
+          <a href="../css-variables/" class="page-nav-btn"
+            >Next: CSS Variables →</a
+          >
+        </div>
+        <div class="page-intro">
+          <p>
+            <strong>Transitions</strong> smoothly animate property changes. <strong>Animations</strong>
+            define keyframe sequences for more complex motion effects. Both run on the GPU for smooth performance.
+          </p>
+          <div class="quick-links">
+            <a class="pill" href="#transitions">Transitions</a>
+            <a class="pill" href="#timing">Timing Functions</a>
+            <a class="pill" href="#keyframes">Keyframes</a>
+            <a class="pill" href="#performance">Performance</a>
+          </div>
+        </div>
+
+        <section class="demo-block" id="transitions">
+          <div class="demo-content">
+            <h2>CSS Transitions</h2>
+            <p class="demo-description">
+              Transitions smoothly animate a change in CSS property from one value to another over time.
+              Use <code>transition-property</code>, <code>transition-duration</code>, and others.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>.box {
+  width: 100px;
+  height: 100px;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.box:hover {
+  width: 200px;
+  background: var(--accent-2);
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Hover the box</h4>
+            <div class="transition-demo"></div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="timing">
+          <div class="demo-content">
+            <h2>Timing Functions</h2>
+            <p class="demo-description">
+              Control how a transition progresses. <code>ease</code>, <code>linear</code>,
+              <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code>, or <code>cubic-bezier()</code>.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>.box {
+  transition: transform 0.5s ease-in-out;
+  /* ease, linear, ease-in, ease-out, ease-in-out */
+}
+
+.box:hover {
+  transform: translateX(200px);
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Timing function comparison</h4>
+            <div class="timing-demo-controls">
+              <label>
+                <input type="radio" name="timing" value="linear" /> Linear
+              </label>
+              <label>
+                <input type="radio" name="timing" value="ease" checked /> Ease (default)
+              </label>
+              <label>
+                <input type="radio" name="timing" value="ease-in" /> Ease-in
+              </label>
+              <label>
+                <input type="radio" name="timing" value="ease-out" /> Ease-out
+              </label>
+            </div>
+            <button class="timing-demo-btn">Click me</button>
+            <div class="timing-demo"></div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="keyframes">
+          <div class="demo-content">
+            <h2>Keyframe Animations</h2>
+            <p class="demo-description">
+              Define animations using <code>@keyframes</code>. Control multiple steps and create
+              complex motion sequences. Use <code>animation-name</code> and <code>animation-duration</code>.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-50px); }
+  100% { transform: translateY(0); }
+}
+
+.box {
+  animation: bounce 1s ease-in-out infinite;
+  /* name, duration, timing, iteration */
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Bouncing animations</h4>
+            <div class="keyframe-demos">
+              <div class="bounce-demo"></div>
+              <div class="spin-demo"></div>
+              <div class="pulse-demo"></div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light); text-align: center;">
+              Bounce • Spin • Pulse
+            </p>
+          </div>
+        </section>
+
+        <section class="demo-block" id="performance">
+          <div class="demo-content">
+            <h2>Performance Tips</h2>
+            <p class="demo-description">
+              Not all properties animate at the same performance. Animate <code>transform</code> and
+              <code>opacity</code> for best results. Avoid animating <code>width</code>,
+              <code>height</code>, or <code>position</code> when possible.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* ✅ Good - GPU accelerated */
+.box {
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.box:hover {
+  transform: scale(1.2) rotateY(180deg);
+  opacity: 0.8;
+}
+
+/* ❌ Avoid - causes layout recalculations */
+.box {
+  transition: width 0.3s, height 0.3s;
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Good vs poor performance</h4>
+            <div class="performance-demos">
+              <div class="perf-good">
+                <div class="perf-box"></div>
+                <p>Good: transform</p>
+              </div>
+              <div class="perf-bad">
+                <div class="perf-box-bad"></div>
+                <p>Poor: width/height</p>
+              </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
+              Hover to see the difference. Inspect DevTools to see which causes repaints.
+            </p>
+          </div>
+        </section>
+
+        <div class="comparison-table">
+          <h3>Transitions vs Animations</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Aspect</th>
+                <th>Transitions</th>
+                <th>Animations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Trigger</td>
+                <td>State change (hover, active, etc.)</td>
+                <td>Automatic or on load</td>
+              </tr>
+              <tr>
+                <td>Duration</td>
+                <td>Single transition</td>
+                <td>Multiple keyframes</td>
+              </tr>
+              <tr>
+                <td>Control</td>
+                <td>Simple A to B</td>
+                <td>Complex multi-step sequences</td>
+              </tr>
+              <tr>
+                <td>Repeat</td>
+                <td>No (unless triggered again)</td>
+                <td>Yes (infinite or n times)</td>
+              </tr>
+              <tr>
+                <td>Use Case</td>
+                <td>Button hover, form focus</td>
+                <td>Loading spinners, background animations</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="summary">
+          <h3>Summary</h3>
+          <ul>
+            <li><strong>Transitions</strong> smoothly animate property changes between states.</li>
+            <li><strong>animation</strong> uses <code>@keyframes</code> for complex, multi-step motion.</li>
+            <li><strong>Timing functions</strong> control the pace (ease, linear, etc.).</li>
+            <li><strong>transform</strong> and <strong>opacity</strong> perform best (GPU accelerated).</li>
+            <li>Avoid animating layout properties like <code>width</code>, <code>height</code>,
+              <code>position</code>.
+            </li>
+            <li><strong>animation-delay</strong> staggers multiple animations.</li>
+            <li><strong>animation-iteration-count</strong> controls how many times to loop.</li>
+          </ul>
+        </div>
+
+        <div class="page-nav-buttons">
+          <a href="../css-grid/" class="page-nav-btn"
+            >← Previous: CSS Grid Layouts</a
+          >
+          <a href="../css-variables/" class="page-nav-btn"
+            >Next: CSS Variables →</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="footer-name">CSS Essentials</div>
+            <p class="footer-desc">Learn CSS the right way.</p>
+          </div>
+
+          <div class="footer-right">
+            <ul class="footer-links">
+              <li><a href="../#topics">Topics</a></li>
+              <li><a href="../#about">About</a></li>
+              <li>
+                <a href="https://github.com/prynixdevs/CSS-Essentials" target="_blank"
+                  >GitHub</a
+                >
+              </li>
+            </ul>
+
+            <div class="footer-credits">
+              <p>Made by <strong>Prasum Shrestha & Prasoon Kandel</strong></p>
+              <p>© 2026 CSS Essentials Workshop</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+      // Timing function demo
+      document.querySelectorAll('input[name="timing"]').forEach((radio) => {
+        radio.addEventListener('change', function () {
+          const demo = document.querySelector('.timing-demo');
+          demo.style.animationTimingFunction = this.value;
+        });
+      });
+
+      document.querySelector('.timing-demo-btn').addEventListener('click', function () {
+        const demo = document.querySelector('.timing-demo');
+        demo.style.animation = 'none';
+        setTimeout(() => {
+          demo.style.animation = '';
+        }, 10);
+      });
+    </script>
+  </body>
+</html>

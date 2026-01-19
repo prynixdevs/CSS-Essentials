@@ -1,0 +1,243 @@
+/* CSS Variables Styles */
+
+.vars-page {
+  /* Custom variables for this page */
+}
+
+/* Declaration Demo */
+.vars-demo-declaration {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+  background: var(--bg-alt);
+  color: var(--text);
+  border-radius: 8px;
+}
+
+.vars-box {
+  flex: 1;
+  min-width: 150px;
+  padding: 2rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.vars-box:hover {
+  transform: translateY(-4px);
+}
+
+.vars-dark {
+  background: var(--primary-dark);
+}
+
+.vars-accent {
+  background: var(--accent-2);
+}
+
+/* Usage Demo */
+.vars-demo-usage {
+  padding: 2rem;
+  background: var(--bg-alt);
+  color: var(--text);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.vars-button {
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.vars-button:hover {
+  background: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+.vars-card {
+  padding: 1.5rem;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+.vars-card h4 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.vars-card p {
+  margin: 0.5rem 0 0 0;
+  color: var(--text-light);
+}
+
+/* Scoping Demo */
+.vars-demo-scope-parent {
+  padding: 2rem;
+  background: var(--bg-alt);
+  color: var(--text);
+  border-radius: 8px;
+  --scope-color: var(--primary);
+}
+
+.vars-demo-scope-box {
+  padding: 2rem;
+  background: var(--scope-color);
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.vars-demo-scope-child {
+  padding: 2rem;
+  background: var(--scope-color);
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 600;
+  --scope-color: var(--accent-2);
+}
+
+/* Fallback Demo */
+.vars-demo-fallback {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+  background: var(--bg-alt);
+  color: var(--text);
+  border-radius: 8px;
+}
+
+.vars-fallback-defined {
+  flex: 1;
+  min-width: 150px;
+  padding: 2rem;
+  background: var(--defined-var, blue);
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.vars-fallback-undefined {
+  flex: 1;
+  min-width: 150px;
+  padding: 2rem;
+  background: var(--undefined-var, red);
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* JavaScript Demo */
+.vars-demo-js-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.vars-js-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.vars-js-btn[data-color="#1e78a8"] {
+  background: #1e78a8;
+}
+
+.vars-js-btn[data-color="#d97706"] {
+  background: #d97706;
+}
+
+.vars-js-btn[data-color="#ec4899"] {
+  background: #ec4899;
+}
+
+.vars-js-btn[data-color="#10b981"] {
+  background: #10b981;
+}
+
+.vars-js-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.vars-js-demo {
+  --demo-primary: #1e78a8;
+  width: 100%;
+  padding: 3rem;
+  background: var(--demo-primary);
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: background 0.3s ease;
+}
+
+/* Quick Links */
+.quick-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.pill:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .vars-demo-declaration,
+  .vars-demo-fallback {
+    flex-direction: column;
+  }
+
+  .vars-box,
+  .vars-fallback-defined,
+  .vars-fallback-undefined {
+    min-width: 100%;
+  }
+
+  .vars-js-demo {
+    padding: 2rem 1rem;
+  }
+}

@@ -97,6 +97,7 @@
 .topics {
   padding: 6rem 0;
   background: var(--bg-alt);
+  color: var(--text);
 }
 
 .topics-grid {
