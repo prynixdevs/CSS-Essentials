@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Selectors - CSS Essentials</title>
+    <link rel="icon" href="../favicon.png" />
+    <link rel="shortcut icon" href="../favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/page.css" />
+    <link rel="stylesheet" href="../css/advanced-selectors.css" />
+  </head>
+  <body class="adv-sel-page">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="../" class="nav-logo">
+            <img src="../prynix.png" alt="Prynix Logo" class="logo-img" />
+            <span class="logo-title">CSS Essentials</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <svg
+              class="nav-toggle-icon"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
+          <div class="nav-links" id="nav-links">
+            <a href="../">Home</a>
+            <a href="../#about">About</a>
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-dropdown-toggle"
+                aria-expanded="false"
+                aria-controls="nav-dropdown-menu"
+              >
+                Workshop Topics <span class="nav-dropdown-caret">▾</span>
+              </button>
+              <div class="nav-dropdown-menu" id="nav-dropdown-menu">
+                <a href="../#topics">All Topics</a>
+                <a href="../pseudo-selectors/">Pseudo-Class Selectors</a>
+                <a href="../layout-methods/">Layout Methods</a>
+                <a href="../flexbox-mastery/">Flexbox Mastery</a>
+                <a href="../css-grid/">CSS Grid Layouts</a>
+                <a href="../animations/">Animations & Transitions</a>
+                <a href="../css-variables/">CSS Variables</a>
+                <a href="../advanced-selectors/">Advanced Selectors</a>
+              </div>
+            </div>
+            <a
+              href="https://github.com/prynixdevs/CSS-Essentials"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-cta"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container">
+        <a href="../" class="back-link">← Back to Home</a>
+        <h1>Advanced Selectors</h1>
+        <p>
+          Target exactly what you need. Combine selectors for precision styling.
+        </p>
+      </div>
+    </header>
+
+    <main class="demo-page">
+      <div class="container">
+        <div class="page-nav-buttons">
+          <a href="../css-variables/" class="page-nav-btn"
+            >← Previous: CSS Variables</a
+          >
+          <a href="../" class="page-nav-btn">Back to Home</a>
+        </div>
+        <div class="page-intro">
+          <p>
+            Go beyond basic selectors. Use combinators, attribute selectors,
+            pseudo-classes, and more to target elements with surgical precision.
+          </p>
+          <div class="quick-links">
+            <a class="pill" href="#combinators">Combinators</a>
+            <a class="pill" href="#attributes">Attributes</a>
+            <a class="pill" href="#pseudo-elements">Pseudo-Elements</a>
+            <a class="pill" href="#specificity">Specificity</a>
+          </div>
+        </div>
+
+        <section class="demo-block" id="combinators">
+          <div class="demo-content">
+            <h2>Combinators</h2>
+            <p class="demo-description">
+              Use combinators to target elements based on their relationship to
+              others:
+              <code>Descendant</code>, <code>Child</code>, <code>Sibling</code>,
+              <code>Adjacent</code>.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+                  ></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Descendant - all p inside .container */
+.container p { color: blue; }
+
+/* Child - only direct children */
+.container > p { color: red; }
+
+/* Adjacent Sibling - p immediately after h2 */
+h2 + p { font-weight: bold; }
+
+/* General Sibling - all p after h2 */
+h2 ~ p { margin-top: 1rem; }</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Combinator examples</h4>
+            <div class="comb-demo">
+              <div class="comb-container">
+                <p>Descendant - styled</p>
+                <div>
+                  <p>Nested descendant - also styled</p>
+                </div>
+                <p>Descendant - styled</p>
+              </div>
+              <div class="comb-container-child">
+                <p>Direct child - red</p>
+                <div>
+                  <p>Nested - not red</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="attributes">
+          <div class="demo-content">
+            <h2>Attribute Selectors</h2>
+            <p class="demo-description">
+              Target elements based on attributes. Match exact values, partial
+              strings, prefixes, suffixes.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+                  ></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Has attribute */
+[disabled] { opacity: 0.5; }
+
+/* Exact value */
+input[type="text"] { border: 1px solid blue; }
+
+/* Contains word */
+[class~="active"] { font-weight: bold; }
+
+/* Starts with */
+a[href^="https"] { color: green; }
+
+/* Ends with */
+a[href$=".pdf"] { background: red; }
+
+/* Contains substring */
+a[href*="example"] { color: purple; }</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Attribute selectors</h4>
+            <div class="attr-demo">
+              <input type="text" placeholder="text input - styled" />
+              <input type="password" placeholder="password - not styled" />
+              <a href="https://example.com">HTTPS link - green</a>
+              <a href="http://example.com">HTTP link - not styled</a>
+              <a href="document.pdf">PDF link - has icon</a>
+              <button disabled>Disabled button</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="pseudo-elements">
+          <div class="demo-content">
+            <h2>Pseudo-Elements</h2>
+            <p class="demo-description">
+              Style specific parts of elements: <code>::before</code>,
+              <code>::after</code>, <code>::first-line</code>,
+              <code>::first-letter</code>, <code>::selection</code>.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+                  ></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Add content before element */
+.icon::before {
+  content: "→ ";
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* Add content after element */
+.note::after {
+  content: " [Note]";
+  color: gray;
+}
+
+/* First letter - drop cap */
+p::first-letter {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* First line styling */
+p::first-line {
+  font-weight: bold;
+}</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Pseudo-elements in action</h4>
+            <div class="pseudo-demo">
+              <div class="pseudo-icon">Icon element</div>
+              <p class="pseudo-note">This is a note</p>
+              <p class="pseudo-first-line">
+                The first line of this paragraph is styled differently. Notice
+                how only the first line gets the special treatment.
+              </p>
+              <p class="pseudo-first-letter">
+                This paragraph has a drop cap on the first letter. Try selecting
+                and highlighting the text to see the selection color.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-block" id="specificity">
+          <div class="demo-content">
+            <h2>Specificity</h2>
+            <p class="demo-description">
+              CSS applies based on specificity. Inline styles (1000) beat IDs
+              (100) beat classes (10) beat elements (1). Chain selectors to
+              increase specificity.
+            </p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+                  ></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy
+              </button>
+              <pre><code>/* Specificity = 1 (element) */
+p { color: black; }
+
+/* Specificity = 10 (class) - WINS */
+.text { color: blue; }
+
+/* Specificity = 100 (ID) - WINS OVER CLASS */
+#intro { color: red; }
+
+/* Specificity = 11 (1 element + 1 class) */
+p.highlight { color: yellow; }
+
+/* Specificity = 101 (1 ID + 1 element) - WINS */
+#header p { color: green; }
+
+/* Avoid: Specificity = 1000 (inline) - NEVER USE */
+&lt;p style="color: purple;"&gt;Don't do this&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+          <div class="demo-visual">
+            <h4>Try it - Specificity in action</h4>
+            <div class="spec-demo">
+              <p class="spec-element">Element selector (1)</p>
+              <p class="spec-class">Class selector (10)</p>
+              <p id="spec-id" class="spec-class">ID selector (100)</p>
+              <p class="spec-combined-chain">Element + Class (11)</p>
+            </div>
+            <p
+              style="
+                margin-top: 1rem;
+                font-size: 0.9rem;
+                color: var(--text-light);
+              "
+            >
+              CSS applies the most specific rule. Higher specificity wins.
+            </p>
+          </div>
+        </section>
+
+        <div class="comparison-table">
+          <h3>Selector Specificity Chart</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Selector</th>
+                <th>Specificity</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Element</td>
+                <td>1</td>
+                <td><code>p</code>, <code>div</code></td>
+              </tr>
+              <tr>
+                <td>Class</td>
+                <td>10</td>
+                <td><code>.button</code>, <code>[type="text"]</code></td>
+              </tr>
+              <tr>
+                <td>ID</td>
+                <td>100</td>
+                <td><code>#header</code></td>
+              </tr>
+              <tr>
+                <td>Inline Style</td>
+                <td>1000</td>
+                <td><code>style="color: red;"</code></td>
+              </tr>
+              <tr>
+                <td>!important</td>
+                <td>Highest</td>
+                <td><code>color: red !important;</code></td>
+              </tr>
+              <tr>
+                <td>Element + Class</td>
+                <td>11</td>
+                <td><code>p.highlight</code></td>
+              </tr>
+              <tr>
+                <td>Descendant Chain</td>
+                <td>Sum of all</td>
+                <td><code>.header .nav .link</code> = 30</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="summary">
+          <h3>Summary</h3>
+          <ul>
+            <li>
+              <strong>Combinators</strong> target elements based on
+              relationships: <code>></code>, <code>+</code>, <code>~</code>.
+            </li>
+            <li>
+              <strong>Attribute selectors</strong> match elements by attributes:
+              <code>[attr]</code>, <code>[attr="value"]</code>.
+            </li>
+            <li>
+              <strong>::before and ::after</strong> add content and styling to
+              elements.
+            </li>
+            <li>
+              <strong>Specificity</strong> determines which CSS rule applies
+              when conflicts occur.
+            </li>
+            <li>
+              <strong>Chain selectors</strong> to increase specificity when
+              needed.
+            </li>
+            <li>
+              <strong>Avoid !important</strong> - it breaks cascading and causes
+              issues.
+            </li>
+            <li>
+              <strong>Combine techniques</strong> for powerful, precise
+              targeting.
+            </li>
+          </ul>
+        </div>
+
+        <div class="page-nav-buttons">
+          <a href="../css-variables/" class="page-nav-btn"
+            >← Previous: CSS Variables</a
+          >
+          <a href="../" class="page-nav-btn">Back to Home</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="footer-name">CSS Essentials</div>
+            <p class="footer-desc">Learn CSS the right way.</p>
+          </div>
+
+          <div class="footer-right">
+            <ul class="footer-links">
+              <li><a href="../#topics">Topics</a></li>
+              <li><a href="../#about">About</a></li>
+              <li>
+                <a
+                  href="https://github.com/prynixdevs/CSS-Essentials"
+                  target="_blank"
+                  >GitHub</a
+                >
+              </li>
+            </ul>
+
+            <div class="footer-credits">
+              <p>
+                Made by
+                <a
+                  href="https://github.com/prasoonkandel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Prasoon Kandel</a
+                >
+              </p>
+              <p>© 2026 CSS Essentials Workshop</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
