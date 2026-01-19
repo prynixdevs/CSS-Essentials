@@ -1,3 +1,20 @@
+@media (max-width: 700px) {
+  .demo-block {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .demo-content h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
+  }
+  .demo-description {
+    font-size: 1em;
+  }
+  .demo-visual {
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+}
 .page-header {
   background: var(--dark);
   color: white;
