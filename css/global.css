@@ -205,7 +205,6 @@
 
 .nav-dropdown-menu a.disabled-link {
   opacity: 0.5;
-  cursor: not-allowed;
   color: var(--text-light);
 }
 
@@ -523,6 +522,7 @@ tbody tr {
 
 tbody tr:hover {
   background: var(--bg-alt);
+  color: var(--text);
 }
 
 tbody code {
@@ -539,6 +539,7 @@ tbody code {
   margin-top: 3rem;
   padding: 2.5rem;
   background: var(--bg-alt);
+  color: var(--text);
   border-radius: 12px;
   border-left: 4px solid var(--primary);
 }

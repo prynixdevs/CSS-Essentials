@@ -153,10 +153,10 @@
 
 .demo-description code {
   background: var(--bg-alt);
+  color: var(--dark);
   padding: 0.25rem 0.6rem;
   border-radius: 6px;
   font-family: "Courier New", monospace;
-  color: var(--accent);
   font-weight: 600;
   font-size: 0.95rem;
 }

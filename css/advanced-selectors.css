@@ -1,0 +1,264 @@
+/* Advanced Selectors Styles */
+
+.adv-sel-page {
+  /* Custom variables for this page */
+}
+
+/* Combinators Demo */
+.comb-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--bg-alt);
+  color: var(--text);
+  border-radius: 8px;
+}
+
+.comb-container {
+  padding: 1.5rem;
+  background: white;
+  border-left: 4px solid var(--primary);
+  border-radius: 6px;
+}
+
+.comb-container p {
+  margin: 0.5rem 0;
+  color: blue;
+  font-weight: 600;
+}
+
+.comb-container-child {
+  padding: 1.5rem;
+  background: white;
+  border-left: 4px solid var(--primary);
+  border-radius: 6px;
+}
+
+.comb-container-child > p {
+  margin: 0.5rem 0;
+  color: red;
+  font-weight: 600;
+}
+
+.comb-container-child > div > p {
+  color: var(--text);
+}
+
+/* Attribute Selectors Demo */
+.attr-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--bg-alt);
+  color: var(--text);
+  border-radius: 8px;
+}
+
+.attr-demo input[type="text"],
+.attr-demo input[type="password"] {
+  padding: 0.75rem;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.attr-demo input[type="text"] {
+  border-color: blue;
+  background: #e3f2fd;
+}
+
+.attr-demo input[type="password"] {
+  border-color: var(--border);
+}
+
+.attr-demo a {
+  padding: 0.75rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.attr-demo a[href^="https"] {
+  color: green;
+  background: #e8f5e9;
+}
+
+.attr-demo a[href$=".pdf"]::after {
+  content: " 📄";
+}
+
+.attr-demo button[disabled] {
+  opacity: 0.5;
+}
+
+.attr-demo button:not([disabled]) {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.attr-demo button:not([disabled]):hover {
+  background: var(--primary-dark);
+}
+
+/* Pseudo-Elements Demo */
+.pseudo-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: var(--bg-alt);
+  color: var(--text);
+  border-radius: 8px;
+}
+
+.pseudo-icon::before {
+  content: "→ ";
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.pseudo-icon {
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.pseudo-note::after {
+  content: " [Note]";
+  color: var(--text-light);
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.pseudo-note {
+  padding: 1rem;
+  background: white;
+  border-left: 4px solid var(--accent-2);
+  border-radius: 6px;
+}
+
+.pseudo-first-letter::first-letter {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: var(--primary);
+  float: left;
+  line-height: 1;
+  padding-right: 0.5rem;
+}
+
+.pseudo-first-letter {
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+  text-align: justify;
+}
+
+.pseudo-first-line::first-line {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pseudo-first-line {
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+  line-height: 1.8;
+}
+
+/* Specificity Demo */
+.spec-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--bg-alt);
+  color: var(--text);
+  border-radius: 8px;
+}
+
+.spec-demo p {
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.spec-element {
+  background: var(--bg);
+  border: 2px solid var(--primary);
+  color: var(--text);
+}
+
+.spec-class {
+  background: #e3f2fd;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+#spec-id {
+  background: var(--primary);
+  color: white;
+  border: 2px solid var(--primary-dark);
+}
+
+.spec-combined-chain {
+  background: var(--accent-2);
+  color: var(--primary);
+}
+
+/* Quick Links */
+.quick-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.pill:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .comb-demo,
+  .attr-demo,
+  .pseudo-demo,
+  .spec-demo {
+    padding: 1.5rem 1rem;
+  }
+
+  .attr-demo a,
+  .attr-demo input {
+    font-size: 0.95rem;
+  }
+
+  .pseudo-first-letter::first-letter {
+    font-size: 2em;
+  }
+}
